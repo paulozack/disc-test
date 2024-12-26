@@ -1,85 +1,756 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teste DISCS</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Teste DISC - Navegação</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: 'Roboto', Arial, sans-serif;
+      margin: 0;
       padding: 0;
+      background-color: #f7f9fc;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-weight: 700;
+      color: #0056b3;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      padding: 20px 30px;
+    }
+    .question-group {
+      display: none; /* Todos os grupos começam ocultos */
     }
     .question-container {
       margin-bottom: 20px;
     }
     label {
-      font-weight: bold;
+      font-weight: 500;
+      margin-bottom: 5px;
+      display: block;
+      font-size: 16px;
+      color: #0056b3;
     }
-    select {
-      margin: 10px 0;
+    select,
+    input[type="text"],
+    input[type="email"] {
+      margin-top: 8px;
       padding: 10px;
       font-size: 16px;
-      width: 200px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f9f9f9;
     }
-    button {
+    select:focus,
+    input[type="text"]:focus,
+    input[type="email"]:focus {
+      border-color: #0056b3;
+      outline: none;
+    }
+    .navigation-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .navigation-buttons button {
       padding: 10px 20px;
       font-size: 16px;
-      background-color: #007bff;
+      background-color: #0056b3;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      margin: 0 10px;
     }
-    button:hover {
-      background-color: #0056b3;
+    .navigation-buttons button:hover {
+      background-color: #003d82;
     }
   </style>
 </head>
 <body>
-  <h1>Escolha a Opção que MAIS e MENOS te Representa</h1>
-  
-  <form id="formulario">
-    <div class="question-container">
-      <label>Qual cor MAIS te representa?</label>
-      <select id="maisRepresenta" required>
-        <option value="" disabled selected>Selecione</option>
-        <option value="vermelho">A - Vermelho</option>
-        <option value="azul">B - Azul</option>
-        <option value="verde">C - Verde</option>
-        <option value="amarelo">D - Amarelo</option>
-      </select>
-    </div>
+  <h1>Teste DISC</h1>
+  <div class="container">
+    <form id="formulario">
 
-    <div class="question-container">
-      <label>Qual cor MENOS te representa?</label>
-      <select id="menosRepresenta" required>
-        <option value="" disabled selected>Selecione</option>
-        <option value="vermelho">A - Vermelho</option>
-        <option value="azul">B - Azul</option>
-        <option value="verde">C - Verde</option>
-        <option value="amarelo">D - Amarelo</option>
-      </select>
-    </div>
+      <!-- ===================== GROUP 0 (Dados iniciais) ===================== -->
+      <div class="question-group" id="group0">
+        <div class="question-container">
+          <label for="nome">Nome Completo:</label>
+          <input 
+            type="text" 
+            id="nome" 
+            name="nome" 
+            placeholder="Digite seu nome completo" 
+            required
+          />
+        </div>
+        <div class="question-container">
+          <label for="email">E-mail:</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Digite seu e-mail" 
+            required
+          />
+        </div>
+      </div>
 
-    <button type="submit">Enviar</button>
-  </form>
+      <!-- ===================== GROUP 1 ===================== -->
+      <div class="question-group" id="group1">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta1" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">DETERMINADO</option>
+            <option value="I">CONFIANTE</option>
+            <option value="S">CONSISTENTE</option>
+            <option value="C">PRECISO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta1" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">DETERMINADO</option>
+            <option value="I">CONFIANTE</option>
+            <option value="S">CONSISTENTE</option>
+            <option value="C">PRECISO</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta2" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">APRESSADO</option>
+            <option value="I">PERSUASIVO</option>
+            <option value="S">METÓDICO</option>
+            <option value="C">CUIDADOSO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta2" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">APRESSADO</option>
+            <option value="I">PERSUASIVO</option>
+            <option value="S">METÓDICO</option>
+            <option value="C">CUIDADOSO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 2 ===================== -->
+      <div class="question-group" id="group2">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta3" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">COMPETITIVO</option>
+            <option value="I">POLÍTICO</option>
+            <option value="S">COOPERATIVO</option>
+            <option value="C">DIPLOMATA</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta3" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">COMPETITIVO</option>
+            <option value="I">POLÍTICO</option>
+            <option value="S">COOPERATIVO</option>
+            <option value="C">DIPLOMATA</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta4" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">OBJETIVO</option>
+            <option value="I">EXAGERADO</option>
+            <option value="S">ESTÁVEL</option>
+            <option value="C">EXATO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta4" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">OBJETIVO</option>
+            <option value="I">EXAGERADO</option>
+            <option value="S">ESTÁVEL</option>
+            <option value="C">EXATO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 3 ===================== -->
+      <div class="question-group" id="group3">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta5" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">ASSERTIVO</option>
+            <option value="I">OTIMISTA</option>
+            <option value="S">PACIENTE</option>
+            <option value="C">PRUDENTE</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta5" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">ASSERTIVO</option>
+            <option value="I">OTIMISTA</option>
+            <option value="S">PACIENTE</option>
+            <option value="C">PRUDENTE</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta6" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">FAZEDOR</option>
+            <option value="I">INSPIRADOR</option>
+            <option value="S">PERSISTENTE</option>
+            <option value="C">PERFECCIONISTA</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta6" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">FAZEDOR</option>
+            <option value="I">INSPIRADOR</option>
+            <option value="S">PERSISTENTE</option>
+            <option value="C">PERFECCIONISTA</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 4 ===================== -->
+      <div class="question-group" id="group4">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta7" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AGRESSIVO</option>
+            <option value="I">EXPANSIVO</option>
+            <option value="S">POSSESSIVO</option>
+            <option value="C">JULGADOR</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta7" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AGRESSIVO</option>
+            <option value="I">EXPANSIVO</option>
+            <option value="S">POSSESSIVO</option>
+            <option value="C">JULGADOR</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta8" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">DECIDIDO</option>
+            <option value="I">FLEXÍVEL</option>
+            <option value="S">PREVISÍVEL</option>
+            <option value="C">SISTEMÁTICO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta8" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">DECIDIDO</option>
+            <option value="I">FLEXÍVEL</option>
+            <option value="S">PREVISÍVEL</option>
+            <option value="C">SISTEMÁTICO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 5 ===================== -->
+      <div class="question-group" id="group5">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta9" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INOVADOR</option>
+            <option value="I">COMUNICATIVO</option>
+            <option value="S">AGRADÁVEL</option>
+            <option value="C">ELEGANTE</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta9" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INOVADOR</option>
+            <option value="I">COMUNICATIVO</option>
+            <option value="S">AGRADÁVEL</option>
+            <option value="C">ELEGANTE</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta10" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AUTORITÁRIO</option>
+            <option value="I">EXTRAVAGANTE</option>
+            <option value="S">MODESTO</option>
+            <option value="C">DESCONFIADO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta10" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AUTORITÁRIO</option>
+            <option value="I">EXTRAVAGANTE</option>
+            <option value="S">MODESTO</option>
+            <option value="C">DESCONFIADO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 6 ===================== -->
+      <div class="question-group" id="group6">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta11" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">ENÉRGICO</option>
+            <option value="I">ENTUSIASMADO</option>
+            <option value="S">CALMO</option>
+            <option value="C">DISCIPLINADO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta11" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">ENÉRGICO</option>
+            <option value="I">ENTUSIASMADO</option>
+            <option value="S">CALMO</option>
+            <option value="C">DISCIPLINADO</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta12" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">FIRME</option>
+            <option value="I">EXPRESSIVO</option>
+            <option value="S">AMÁVEL</option>
+            <option value="C">FORMAL</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta12" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">FIRME</option>
+            <option value="I">EXPRESSIVO</option>
+            <option value="S">AMÁVEL</option>
+            <option value="C">FORMAL</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 7 ===================== -->
+      <div class="question-group" id="group7">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta13" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">VISIONÁRIO</option>
+            <option value="I">CRIATIVO</option>
+            <option value="S">PONDERADO</option>
+            <option value="C">DETALHISTA</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta13" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">VISIONÁRIO</option>
+            <option value="I">CRIATIVO</option>
+            <option value="S">PONDERADO</option>
+            <option value="C">DETALHISTA</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta14" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">EGOCÊNTRICO</option>
+            <option value="I">TAGARELA</option>
+            <option value="S">ACOMODADO</option>
+            <option value="C">RETRAÍDO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta14" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">EGOCÊNTRICO</option>
+            <option value="I">TAGARELA</option>
+            <option value="S">ACOMODADO</option>
+            <option value="C">RETRAÍDO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 8 ===================== -->
+      <div class="question-group" id="group8">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta15" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INSPIRA CONFIANÇA</option>
+            <option value="I">CONVINCENTE</option>
+            <option value="S">COMPREENSIVO</option>
+            <option value="C">PONTUAL</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta15" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INSPIRA CONFIANÇA</option>
+            <option value="I">CONVINCENTE</option>
+            <option value="S">COMPREENSIVO</option>
+            <option value="C">PONTUAL</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta16" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INTIMIDANTE</option>
+            <option value="I">SEM CERIMÔNIA</option>
+            <option value="S">RESERVADO</option>
+            <option value="C">INTRANSIGENTE</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta16" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INTIMIDANTE</option>
+            <option value="I">SEM CERIMÔNIA</option>
+            <option value="S">RESERVADO</option>
+            <option value="C">INTRANSIGENTE</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 9 ===================== -->
+      <div class="question-group" id="group9">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta17" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">VIGOROSO</option>
+            <option value="I">CALOROSO</option>
+            <option value="S">GENTIL</option>
+            <option value="C">PREOCUPADO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta17" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">VIGOROSO</option>
+            <option value="I">CALOROSO</option>
+            <option value="S">GENTIL</option>
+            <option value="C">PREOCUPADO</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta18" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">OUSADO</option>
+            <option value="I">SEDUTOR</option>
+            <option value="S">HARMONIZADOR</option>
+            <option value="C">CAUTELOSO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta18" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">OUSADO</option>
+            <option value="I">SEDUTOR</option>
+            <option value="S">HARMONIZADOR</option>
+            <option value="C">CAUTELOSO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 10 ===================== -->
+      <div class="question-group" id="group10">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta19" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">FORÇA DE VONTADE</option>
+            <option value="I">ESPONTÂNEO</option>
+            <option value="S">SATISFEITO</option>
+            <option value="C">CONSERVADOR</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta19" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">FORÇA DE VONTADE</option>
+            <option value="I">ESPONTÂNEO</option>
+            <option value="S">SATISFEITO</option>
+            <option value="C">CONSERVADOR</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta20" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">EXIGENTE</option>
+            <option value="I">SOCIÁVEL</option>
+            <option value="S">LEAL</option>
+            <option value="C">RIGOROSO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta20" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">EXIGENTE</option>
+            <option value="I">SOCIÁVEL</option>
+            <option value="S">LEAL</option>
+            <option value="C">RIGOROSO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 11 ===================== -->
+      <div class="question-group" id="group11">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta21" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">PIONEIRO</option>
+            <option value="I">DIVERTIDO</option>
+            <option value="S">TRANQUILO</option>
+            <option value="C">CONVENCIONAL</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta21" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">PIONEIRO</option>
+            <option value="I">DIVERTIDO</option>
+            <option value="S">TRANQUILO</option>
+            <option value="C">CONVENCIONAL</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta22" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AMBICIOSO</option>
+            <option value="I">RADIANTE</option>
+            <option value="S">REGULADO</option>
+            <option value="C">CALCULISTA</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta22" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AMBICIOSO</option>
+            <option value="I">RADIANTE</option>
+            <option value="S">REGULADO</option>
+            <option value="C">CALCULISTA</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 12 ===================== -->
+      <div class="question-group" id="group12">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta23" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INQUISITIVO</option>
+            <option value="I">OFERECIDO</option>
+            <option value="S">RÍGIDO CONSIGO</option>
+            <option value="C">CÉTICO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta23" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">INQUISITIVO</option>
+            <option value="I">OFERECIDO</option>
+            <option value="S">RÍGIDO CONSIGO</option>
+            <option value="C">CÉTICO</option>
+          </select><br><br>
+        </div>
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta24" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AUDACIOSO</option>
+            <option value="I">EXTROVERTIDO</option>
+            <option value="S">CASUAL</option>
+            <option value="C">METICULOSO</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta24" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">AUDACIOSO</option>
+            <option value="I">EXTROVERTIDO</option>
+            <option value="S">CASUAL</option>
+            <option value="C">METICULOSO</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- ===================== GROUP 13 (Último) ===================== -->
+      <div class="question-group" id="group13">
+        <div class="question-container">
+          <label>O que <b>MAIS</b> te descreve?</label>
+          <select id="maisRepresenta25" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">DIRETO</option>
+            <option value="I">PROLIXO</option>
+            <option value="S">MODERADO</option>
+            <option value="C">PROCESSUAL</option>
+          </select><br><br>
+
+          <label>O que <b>MENOS</b> te descreve?</label>
+          <select id="menosRepresenta25" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="D">DIRETO</option>
+            <option value="I">PROLIXO</option>
+            <option value="S">MODERADO</option>
+            <option value="C">PROCESSUAL</option>
+          </select><br><br>
+        </div>
+      </div>
+
+      <!-- BOTÕES DE NAVEGAÇÃO -->
+      <div class="navigation-buttons">
+        <button type="button" id="prevBtn">Anterior</button>
+        <button type="button" id="nextBtn">Próximo</button>
+        <!-- BOTÃO EXTRA: Gerar Resultado (apenas visível no último grupo) -->
+        <button type="button" id="resultBtn" style="display:none;">Gerar Resultado</button>
+      </div>
+    </form>
+  </div>
 
   <script>
-    const maisRepresenta = document.getElementById("maisRepresenta");
-    const menosRepresenta = document.getElementById("menosRepresenta");
-    const formulario = document.getElementById("formulario");
+    const groups = document.querySelectorAll('.question-group');
+    let currentGroup = 0; // Inicia mostrando o group0
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const resultBtn = document.getElementById('resultBtn');
 
-    // Previne que o usuário selecione a mesma opção para "mais" e "menos"
-    function validarSelecoes(event) {
-      if (maisRepresenta.value === menosRepresenta.value) {
-        alert("As opções MAIS e MENOS não podem ser iguais. Por favor, escolha novamente.");
-        event.preventDefault(); // Previne o envio do formulário
+    function updateGroupVisibility() {
+      // Esconde todos os grupos
+      groups.forEach(group => {
+        group.style.display = 'none';
+      });
+
+      // Mostra somente o grupo atual
+      if (currentGroup >= 0 && currentGroup < groups.length) {
+        groups[currentGroup].style.display = 'block';
+      }
+
+      // Se for o primeiro grupo, esconde botão "Anterior"
+      prevBtn.style.display = currentGroup <= 0 ? 'none' : 'inline-block';
+      
+      // Se for o último grupo, esconde "Próximo" e mostra "Gerar Resultado"
+      if (currentGroup === groups.length - 1) {
+        nextBtn.style.display = 'none';
+        resultBtn.style.display = 'inline-block';
+      } else {
+        nextBtn.style.display = 'inline-block';
+        resultBtn.style.display = 'none';
       }
     }
 
-    // Vincula o evento ao formulário
-    formulario.addEventListener("submit", validarSelecoes);
+    // Verifica se todos os campos do grupo atual estão preenchidos
+    function validateCurrentGroup() {
+      const requiredFields = groups[currentGroup].querySelectorAll('input[required], select[required]');
+      for (const field of requiredFields) {
+        if (!field.value) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // Avançar ou voltar de grupo
+    prevBtn.addEventListener('click', () => {
+      if (currentGroup > 0) {
+        currentGroup--;
+        updateGroupVisibility();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      // Antes de avançar, valida o grupo atual
+      if (!validateCurrentGroup()) {
+        alert('Por favor, preencha todos os campos obrigatórios antes de prosseguir.');
+        return;
+      }
+      if (currentGroup < groups.length - 1) {
+        currentGroup++;
+      }
+      updateGroupVisibility();
+    });
+
+    // Botão "Gerar Resultado": só aparece no último grupo
+    resultBtn.addEventListener('click', () => {
+      // Valida o último grupo também
+      if (!validateCurrentGroup()) {
+        alert('Por favor, preencha todos os campos obrigatórios antes de gerar o resultado.');
+        return;
+      }
+      calcularERedirecionar();
+    });
+
+    // Função que soma/subtrai D, I, S, C e redireciona pra resultado.html
+    function calcularERedirecionar() {
+      let d = 0, i = 0, s = 0, c = 0;
+
+      // Group0 é só dados iniciais, então vamos do 1 ao 13
+      for (let idx = 1; idx <= 13; idx++) {
+        const mais = document.getElementById(`maisRepresenta${idx}`);
+        const menos = document.getElementById(`menosRepresenta${idx}`);
+
+        if (mais) {
+          switch (mais.value) {
+            case 'D': d++; break;
+            case 'I': i++; break;
+            case 'S': s++; break;
+            case 'C': c++; break;
+          }
+        }
+        if (menos) {
+          switch (menos.value) {
+            case 'D': d--; break;
+            case 'I': i--; break;
+            case 'S': s--; break;
+            case 'C': c--; break;
+          }
+        }
+      }
+
+      // Redirecionar para resultado.html passando os valores na query string
+      const urlDestino = `resultado.html?d=${d}&i=${i}&s=${s}&c=${c}`;
+      window.location.href = urlDestino;
+    }
+
+    // Exibe o primeiro grupo ao carregar a página
+    updateGroupVisibility();
   </script>
 </body>
 </html>
