@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resultado - Teste DISC</title>
+  <!-- Importando Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0; 
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #0056b3;
+      text-align: center;
+    }
+    .resultado-item {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    .high {
+      color: #006600; /* verde */
+    }
+    .low {
+      color: #cc0000; /* vermelho */
+    }
+    /* Para centralizar o canvas */
+    .chart-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Resultado do Teste DISC</h1>
+
+    <!-- Exibição numérica -->
+    <div id="resultado"></div>
+
+    <!-- Gráfico de Barras -->
+    <div class="chart-container">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // ---------------------
+    // 1) Ler parâmetros D, I, S, C da URL
+    // ---------------------
+    const params = new URLSearchParams(window.location.search);
+    const d = parseInt(params.get('d'), 10) || 0;
+    const i = parseInt(params.get('i'), 10) || 0;
+    const s = parseInt(params.get('s'), 10) || 0;
+    const c = parseInt(params.get('c'), 10) || 0;
+
+    // ---------------------
+    // 2) Exibir valores D, I, S, C em texto
+    // ---------------------
+    const resultadoDiv = document.getElementById("resultado");
+
+    function formatValue(value) {
+      // Se for >= 0 exibe em verde, senão em vermelho
+      if (value >= 0) {
+        return `<span class="high">+${value}</span>`;
+      } else {
+        return `<span class="low">${value}</span>`;
+      }
+    }
+
+    resultadoDiv.innerHTML = `
+      <p class="resultado-item"><strong>D (Dominância):</strong> ${formatValue(d)}</p>
+      <p class="resultado-item"><strong>I (Influência):</strong> ${formatValue(i)}</p>
+      <p class="resultado-item"><strong>S (Estabilidade):</strong> ${formatValue(s)}</p>
+      <p class="resultado-item"><strong>C (Conformidade):</strong> ${formatValue(c)}</p>
+    `;
+
+    // ---------------------
+    // 3) Construir o gráfico de barras com Chart.js
+    // ---------------------
+    const ctx = document.getElementById('myChart').getContext('2d');
+    // Criamos o gráfico
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['D', 'I', 'S', 'C'],
+        datasets: [{
+          label: 'Resultado do DISC',
+          data: [d, i, s, c],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',   // cor para D
+            'rgba(54, 162, 235, 0.7)',   // cor para I
+            'rgba(255, 206, 86, 0.7)',   // cor para S
+            'rgba(75, 192, 192, 0.7)'    // cor para C
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54,162,235,1)',
+            'rgba(255,206,86,1)',
+            'rgba(75,192,192,1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        // Responsivo
+        responsive: true,
+        // Dimensões do canvas
+        maintainAspectRatio: true,
+        scales: {
+          y: {
+            beginAtZero: true // inicia eixo Y em 0
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
