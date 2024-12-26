@@ -89,42 +89,68 @@
     // ---------------------
     // 3) Construir o gráfico de barras com Chart.js
     // ---------------------
-    const ctx = document.getElementById('myChart').getContext('2d');
-    // Criamos o gráfico
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['D', 'I', 'S', 'C'],
+const ctx = document.getElementById('myChart').getContext('2d');
+
+const dataDISC = {
+    labels: ['D', 'I', 'S', 'C'],
+    valores: [65, 80, 15, 50] // Substitua pelos seus valores
+};
+
+new Chart(ctx, {
+    data: {
         datasets: [{
-          label: 'Resultado do DISC',
-          data: [d, i, s, c],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.7)',   // cor para D
-            'rgba(54, 162, 235, 0.7)',   // cor para I
-            'rgba(255, 206, 86, 0.7)',   // cor para S
-            'rgba(75, 192, 192, 0.7)'    // cor para C
-          ],
-          borderColor: [
-            'rgba(255,99,132,1)',
-            'rgba(54,162,235,1)',
-            'rgba(255,206,86,1)',
-            'rgba(75,192,192,1)'
-          ],
-          borderWidth: 1
+            type: 'bar',
+            label: 'Resultado DISC',
+            data: dataDISC.valores.map((value, index) => ({ x: dataDISC.labels[index], y: value })), // Formata os dados para o gráfico de barras
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.7)', // D (Vermelho)
+                'rgba(255, 205, 86, 0.7)', // I (Amarelo)
+                'rgba(75, 192, 192, 0.7)', // S (Verde)
+                'rgba(54, 162, 235, 0.7)'  // C (Azul)
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 205, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1,
+            barPercentage: 0.5, // Ajusta a largura das barras
+            categoryPercentage: 0.8 // Ajusta o espaçamento entre as barras
+        }, {
+            type: 'line', // Linhas conectando os pontos
+            label: 'Conexão',
+            data: dataDISC.valores.map((value, index) => ({ x: dataDISC.labels[index], y: value })), // Formata os dados para o gráfico de linha
+            borderColor: 'black',
+            borderWidth: 2,
+            fill: false,
+            pointRadius: 5, // Tamanho dos pontos
+            pointBackgroundColor: 'black'
         }]
-      },
-      options: {
-        // Responsivo
+    },
+    options: {
         responsive: true,
-        // Dimensões do canvas
-        maintainAspectRatio: true,
         scales: {
-          y: {
-            beginAtZero: true // inicia eixo Y em 0
-          }
+            x: {
+                grid: {
+                    display: false
+                }
+            },
+            y: {
+                beginAtZero: true,
+                max: 100, // Ajuste conforme necessário
+                grid: {
+                    display: false
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false // Esconde a legenda, se necessário
+            }
         }
-      }
-    });
+    }
+});
   </script>
 </body>
 </html>
