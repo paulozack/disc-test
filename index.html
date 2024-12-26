@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste DISCS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+    }
+    .question-container {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    select {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Escolha a Opção que MAIS e MENOS te Representa</h1>
+  
+  <form id="formulario">
+    <div class="question-container">
+      <label>Qual cor MAIS te representa?</label>
+      <select id="maisRepresenta" required>
+        <option value="" disabled selected>Selecione</option>
+        <option value="vermelho">A - Vermelho</option>
+        <option value="azul">B - Azul</option>
+        <option value="verde">C - Verde</option>
+        <option value="amarelo">D - Amarelo</option>
+      </select>
+    </div>
+
+    <div class="question-container">
+      <label>Qual cor MENOS te representa?</label>
+      <select id="menosRepresenta" required>
+        <option value="" disabled selected>Selecione</option>
+        <option value="vermelho">A - Vermelho</option>
+        <option value="azul">B - Azul</option>
+        <option value="verde">C - Verde</option>
+        <option value="amarelo">D - Amarelo</option>
+      </select>
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script>
+    const maisRepresenta = document.getElementById("maisRepresenta");
+    const menosRepresenta = document.getElementById("menosRepresenta");
+    const formulario = document.getElementById("formulario");
+
+    // Previne que o usuário selecione a mesma opção para "mais" e "menos"
+    function validarSelecoes(event) {
+      if (maisRepresenta.value === menosRepresenta.value) {
+        alert("As opções MAIS e MENOS não podem ser iguais. Por favor, escolha novamente.");
+        event.preventDefault(); // Previne o envio do formulário
+      }
+    }
+
+    // Vincula o evento ao formulário
+    formulario.addEventListener("submit", validarSelecoes);
+  </script>
+</body>
+</html>
