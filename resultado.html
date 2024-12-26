@@ -93,7 +93,7 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 const dataDISC = {
     labels: ['D', 'I', 'S', 'C'],
-    valores: [65, 80, 15, 50] // Substitua pelos seus valores
+    valores: [65, -30, 15, -50] // Agora com valores negativos
 };
 
 new Chart(ctx, {
@@ -101,30 +101,20 @@ new Chart(ctx, {
         datasets: [{
             type: 'bar',
             label: 'Resultado DISC',
-            data: dataDISC.valores.map((value, index) => ({ x: dataDISC.labels[index], y: value })), // Formata os dados para o gráfico de barras
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.7)', // D (Vermelho)
-                'rgba(255, 205, 86, 0.7)', // I (Amarelo)
-                'rgba(75, 192, 192, 0.7)', // S (Verde)
-                'rgba(54, 162, 235, 0.7)'  // C (Azul)
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(255, 205, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
+            data: dataDISC.valores.map((value, index) => ({ x: dataDISC.labels[index], y: value })),
+            backgroundColor: dataDISC.valores.map(value => value >= 0 ? 'rgba(54, 162, 235, 0.7)' : 'rgba(255, 99, 132, 0.7)'), // Cor diferente para valores negativos
+            borderColor: dataDISC.valores.map(value => value >= 0 ? 'rgba(54, 162, 235, 1)' : 'rgba(255, 99, 132, 1)'),
             borderWidth: 1,
-            barPercentage: 0.5, // Ajusta a largura das barras
-            categoryPercentage: 0.8 // Ajusta o espaçamento entre as barras
+            barPercentage: 0.5,
+            categoryPercentage: 0.8
         }, {
-            type: 'line', // Linhas conectando os pontos
+            type: 'line',
             label: 'Conexão',
-            data: dataDISC.valores.map((value, index) => ({ x: dataDISC.labels[index], y: value })), // Formata os dados para o gráfico de linha
+            data: dataDISC.valores.map((value, index) => ({ x: dataDISC.labels[index], y: value })),
             borderColor: 'black',
             borderWidth: 2,
             fill: false,
-            pointRadius: 5, // Tamanho dos pontos
+            pointRadius: 5,
             pointBackgroundColor: 'black'
         }]
     },
@@ -137,8 +127,8 @@ new Chart(ctx, {
                 }
             },
             y: {
-                beginAtZero: true,
-                max: 100, // Ajuste conforme necessário
+                // beginAtZero: false, // Remove essa linha
+                // min: -100, // Opcional: Define um valor mínimo para o eixo Y
                 grid: {
                     display: false
                 }
@@ -146,7 +136,7 @@ new Chart(ctx, {
         },
         plugins: {
             legend: {
-                display: false // Esconde a legenda, se necessário
+                display: false
             }
         }
     }
