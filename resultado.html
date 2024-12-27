@@ -130,7 +130,26 @@ new Chart(ctx, {
                 // beginAtZero: false, // Remove essa linha
                 // min: -100, // Opcional: Define um valor mínimo para o eixo Y
                 grid: {
-                    display: false
+                    //display: true
+					        drawBorder: false,
+                            color: function(context) {
+                                if (context.tick.value === 0) {
+                                    return 'rgba(0, 0, 0, 1)';
+                                }
+                                return 'rgba(0, 0, 0, 0)';
+                            },
+                            lineWidth: function(context) {
+                                if (context.tick.value === 0) {
+                                    return 2;
+                                }
+                                return 0;
+                            },
+                            borderDash: function(context) {
+                                if (context.tick.value !== 0) {
+                                    return [5, 5];
+                                }
+                                return [];
+                            }
                 }
             }
         },
